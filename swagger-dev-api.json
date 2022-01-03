@@ -1,0 +1,79 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API Documentation",
+    "version": "1.0.0",
+    "title": "TRUVIAN-API"
+  },
+  "host": "localhost:8080",
+  "tags": [
+    {
+      "name": "TRUVIAN API",
+      "description": "Truvian api's list to manage all the API's "
+    }
+  ],
+  "schemes": ["http"],
+  "paths": {
+    "/addInstrument": {
+      "post": {
+        "tags": ["Test Management"],
+        "description": "Add New Instrument",
+        "summary": "Add new instrument",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Add New Instrument",
+            "schema": {
+              "$ref": "#/definitions/addInstrument"
+            }
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "The request is OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Authorization failed"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "408": {
+            "description": "Request Timeout"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "504": {
+            "description": "Gateway Timeout"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "addInstrument": {
+      "required": ["serial_number", "software_version", "firmware_version"],
+      "properties": {
+        "serial_number": {
+          "type": "string",
+          "example": "A01"
+        },
+        "software_version": {
+          "type": "string",
+          "example": "1.0.0"
+        },
+        "firmware_version": {
+          "type": "string",
+          "example": "1.0.0rc1"
+        }
+      }
+    }
+  }
+}
